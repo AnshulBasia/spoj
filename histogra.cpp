@@ -22,7 +22,7 @@ int main(){
 			if(s.empty()||ht[s.top()]<ht[i]){
 				s.push(i);
 				i++;
-			}
+			}	
 			else{
 				tp=s.top();
 				s.pop();

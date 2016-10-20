@@ -12,7 +12,7 @@ long long value(vector<long long> c,vector<long long> h,int ht){
 int main(){
 	int t,n;
 	long long a;
-	long long hi,lo,mid;
+	long long hi,lo,mid,costleft,costright,costmid;
 	cin>>t;
 	vector<long long> h,c;
 	while(t--){
@@ -30,10 +30,14 @@ int main(){
 		lo=0;
 		hi=10000;
 		while(hi!=lo){
+			//cout<<hi<<" "<<lo;
+			if(mid==(lo+hi)/2){
+				break;
+			}
 			mid=(lo+hi)/2;
-			long long costleft=value(c,h,mid-1);
-			long long costright=value(c,h,mid+1);
-			long long costmid=value(c,h,mid);
+			costleft=value(c,h,mid-1);
+			costright=value(c,h,mid+1);
+		    costmid=value(c,h,mid);
 			if(costleft>=costmid && costmid>=costright){
 				lo=mid+1;
 			}
@@ -41,6 +45,12 @@ int main(){
 				hi=mid-1;
 			}
 		}
-		cout<<costmid<<endl;
+		if(hi==lo){
+			cout<<value(c,h,lo)<<endl;
+		}
+		else{
+			cout<<costmid<<endl;
+		}
+		
 	}
 }
